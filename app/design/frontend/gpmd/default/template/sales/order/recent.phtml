@@ -1,0 +1,76 @@
+<?php
+/**
+ *
+ * This file is part of the GPMD Magento Responsive Theme.
+ *
+ * The GPMD Magento Responsive Theme is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * The GPMD Magento Responsive Theme is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with the GPMD Magento Responsive Theme. If not, see
+ * http://www.gnu.org/licenses/.
+ *
+ * @category    GPMD
+ * @package     GPMD_Responsive_Theme
+ * @copyright   Copyright (c) 2012 GPMD.
+ * @author      Matt Bailey @GPMD LTD
+ */
+?>
+<div class="box-account box-recent">
+<?php $_orders = $this->getOrders(); ?>
+    <div class="box-head">
+        <h2><?php echo $this->__('Recent Orders') ?></h2>
+        <?php if( sizeof($_orders->getItems()) > 0 ): ?><a href="<?php echo $this->getUrl('sales/order/history') ?>"><?php echo $this->__('View All') ?></a><?php endif; ?>
+    </div>
+<?php if( sizeof($_orders->getItems()) > 0 ): ?>
+	<div class="inner-shadow-wrapper">
+		<table class="data-table" id="my-orders-table">
+		<col width="1" />
+		<col width="1" />
+		<col />
+		<col width="1" />
+		<col width="1" />
+		<col width="1" />
+		    <thead>
+		        <tr>
+		            <th><?php echo $this->__('Order #') ?></th>
+		            <th><?php echo $this->__('Date') ?></th>
+		            <th><?php echo $this->__('Ship To') ?></th>
+		            <th><span class="nobr"><?php echo $this->__('Order Total') ?></span></th>
+		            <th><?php echo $this->__('Status') ?></th>
+		            <th>&nbsp;</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <?php foreach ($_orders as $_order): ?>
+		            <tr>
+		                <td><?php echo $_order->getRealOrderId() ?></td>
+		                <td><span class="nobr"><?php echo $this->formatDate($_order->getCreatedAtStoreDate()) ?></span></td>
+		                <td><?php echo $_order->getShippingAddress() ? $this->htmlEscape($_order->getShippingAddress()->getName()) : '&nbsp;' ?></td>
+		                <td><?php echo $_order->formatPrice($_order->getGrandTotal()) ?></td>
+		                <td><em><?php echo $_order->getStatusLabel() ?></em></td>
+		                <td class="a-center">
+		                    <span class="nobr">
+		                    <a href="<?php echo $this->getViewUrl($_order) ?>"><?php echo $this->__('View Order') ?></a>
+		                    <?php if ($this->helper('sales/reorder')->canReorder($_order)) : ?>
+		                        <span class="separator">|</span> <a href="<?php echo $this->getReorderUrl($_order) ?>" class="link-reorder"><?php echo $this->__('Reorder') ?></a>
+		                    <?php endif ?>
+		                    </span>
+		                </td>
+		            </tr>
+		        <?php endforeach; ?>
+		    </tbody>
+		</table>
+	</div>
+    <script type="text/javascript">decorateTable('my-orders-table')</script>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders.'); ?></p>
+<?php endif; ?>
+</div>

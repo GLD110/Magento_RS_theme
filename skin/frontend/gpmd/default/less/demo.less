@@ -1,0 +1,216 @@
+/**
+ *
+ * This file is part of the GPMD Magento Responsive Theme.
+ *
+ * The GPMD Magento Responsive Theme is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * The GPMD Magento Responsive Theme is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with the GPMD Magento Responsive Theme. If not, see
+ * http://www.gnu.org/licenses/.
+ *
+ * @category    GPMD
+ * @package     GPMD_Responsive_Theme
+ * @copyright   Copyright (c) 2012 GPMD.
+ * @author      Matt Bailey @GPMD LTD
+ */
+
+
+/* Table of Contents
+==================================================
+	#Imports
+	#Grid variables
+	#Base 'mobile first' structure
+	#Media queries */
+
+
+/* #Imports
+================================================== */
+
+
+@import "style-mixins.less";
+@import "layout-mixins.less";
+
+
+/* Grid variables
+================================================== */
+
+//@column-width: 60; /* Uncomment to override default value */
+//@gutter-width: 20; /* Uncomment to override default value */
+//@columns: 12; /* Uncomment to override default value */
+@total-width: 100%;
+
+
+/* #Base 'mobile first' structure
+================================================== */
+
+
+/********** Specific page overrides **********/
+
+
+/********* Home **********/
+
+
+/* Best Selling Products */
+
+.best-selling {
+
+	h3 {
+		.font-size(22);
+		.line-height(28);
+		border-bottom: 1px dotted #999;
+		padding-bottom: @baseline / 2;
+		margin-bottom: @baseline / 2;
+		//background: url('../images/icon-popular.png') no-repeat @baseline / 2 top;
+	}
+
+	td {
+	
+		padding: 0 @baseline / 2;
+
+		.product-description p {
+		
+			.font-size(14);
+			
+			a {
+				font-weight: bold;
+			}
+			
+			&:last-child {
+			
+				a {
+					font-weight: normal;
+				}
+			
+			}
+						
+		}
+	
+	}
+
+}
+
+
+/********* Category landing page *********/
+
+.catalog-category-view {
+
+	.col-main {
+		
+		// Add a bottom margin only to adjacent img siblings of .page-title and .category-title
+		.page-title + a, .category-title + a {
+		
+			img {
+				margin-bottom: @baseline;
+			}
+			
+		}
+		
+	}
+
+	&.categorypath-electronics-html {
+		
+		.col-main {
+		
+			text-align: center;
+		
+			h3 {
+			
+				height: 29px;
+				
+				a {
+					display: inline-block;
+				}
+				
+			}
+			
+			.left {
+				float: none;
+				display: inline-block;
+				margin-right: 0 !important;
+			}
+			
+			.right {
+				float: none;
+				text-align: center;
+				display: inline-block;
+			}
+		
+		}
+		
+	}
+
+}
+
+
+/* Styles below this point override the default 
+'mobile first' styles */
+
+
+/* #Media Queries
+================================================== */
+
+// 480px
+@media only screen and (min-width: 479px) {}
+
+// 600px
+@media only screen and (min-width: 599px) {}
+
+// 768px
+@media only screen and (min-width: 767px) {
+
+	/* Home page - default install */
+	.cms-home {
+	
+		.main-container {
+		
+			.main {
+		
+				.col-main {
+				
+					.std {
+					
+						.row(9);
+					
+						.side-col {
+							.column(3,9);
+						}
+						
+						.home-spot {
+							.column(6,9);
+						}
+						
+					}
+				
+				}
+			
+			}
+		
+		}
+		
+	}
+
+}
+
+// 960px
+@media only screen and (min-width: 959px) {}
+
+// 1382px
+@media only screen and (min-width: 1381px) {}
+
+// HD Ready TV 1219px
+@media only tv and (min-width: 1218px) {}
+
+// Full HD TV 1828px
+@media only tv and (min-width: 1827px) {}
+
+// 2x
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+only screen and (min-device-pixel-ratio: 1.5) {}

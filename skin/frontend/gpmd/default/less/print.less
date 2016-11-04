@@ -1,0 +1,82 @@
+/**
+ *
+ * This file is part of the GPMD Magento Responsive Theme.
+ *
+ * The GPMD Magento Responsive Theme is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * The GPMD Magento Responsive Theme is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with the GPMD Magento Responsive Theme. If not, see
+ * http://www.gnu.org/licenses/.
+ *
+ * @category    GPMD
+ * @package     GPMD_Responsive_Theme
+ * @copyright   Copyright (c) 2012 GPMD.
+ * @author      Matt Bailey @GPMD LTD
+ */
+
+/* Table of Contents
+==================================================
+	#Print Styles */
+
+
+/* #Print Styles
+================================================== */
+
+/* Print styles inlined to avoid extra HTTP connection */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: black !important; /* Black prints faster: sanbeiji.com/archives/953 */
+		text-shadow: none !important;
+		filter: none !important;
+		-ms-filter: none !important;
+	}
+
+	a, a:visited {
+		text-decoration: underline;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")";
+	}
+
+	abbr[title]:after {
+		content: " (" attr(title) ")";
+	}
+
+	/* Do not show javascript and internal links */
+	a[href^="javascript:"]:after, a[href^="#"]:after {
+		content: ""; 
+	}
+
+	/* Printing Tables: css-discuss.incutio.com/wiki/Printing_Tables */
+	thead {
+		display: table-header-group;
+	}
+
+	tr, img {
+		page-break-inside: avoid;
+	}
+
+	@page {
+		margin: 0.5cm;
+	}
+
+	p, h2, h3 {
+		orphans: 3;
+		widows: 3;
+	}
+
+	h2, h3 {
+		page-break-after: avoid;
+	}
+}

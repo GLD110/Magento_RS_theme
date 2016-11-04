@@ -1,0 +1,16 @@
+.font-awesome{font-family:FontAwesome;font-weight:normal;font-style:normal;}
+.accessible-hide{position:absolute !important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px, 1px, 1px, 1px);}
+.hidden{display:none !important;visibility:hidden;}
+.inline-block{display:-moz-inline-stack;display:inline-block;vertical-align:top;zoom:1;*display:inline;}
+body{width:100%;*zoom:1;}body:before,body:after{content:"";display:table;}
+body:after{clear:both;}
+body:before,body:after{content:"";display:table;}
+body:after{clear:both;}
+.best-selling h3{font-size:22px;font-size:1.375rem;line-height:28px;line-height:1.5555555555555556rem;border-bottom:1px dotted #999;padding-bottom:0.5625em;margin-bottom:0.5625em;}
+.best-selling td{padding:0 0.5625em;}.best-selling td .product-description p{font-size:14px;font-size:0.875rem;}.best-selling td .product-description p a{font-weight:bold;}
+.best-selling td .product-description p:last-child a{font-weight:normal;}
+.catalog-category-view .col-main .page-title+a img,.catalog-category-view .col-main .category-title+a img{margin-bottom:1.125em;}
+.catalog-category-view.categorypath-electronics-html .col-main{text-align:center;}.catalog-category-view.categorypath-electronics-html .col-main h3{height:29px;}.catalog-category-view.categorypath-electronics-html .col-main h3 a{display:inline-block;}
+.catalog-category-view.categorypath-electronics-html .col-main .left{float:none;display:inline-block;margin-right:0 !important;}
+.catalog-category-view.categorypath-electronics-html .col-main .right{float:none;text-align:center;display:inline-block;}
+@media only screen and (min-width:479px){}@media only screen and (min-width:599px){}@media only screen and (min-width:767px){.cms-home .main-container .main .col-main .std{display:block;width:102.77777777777777%;margin:0 -1.3888888888888888%;*zoom:1;}.cms-home .main-container .main .col-main .std:before,.cms-home .main-container .main .col-main .std:after{content:"";display:table;} .cms-home .main-container .main .col-main .std:after{clear:both;} .cms-home .main-container .main .col-main .std:before,.cms-home .main-container .main .col-main .std:after{content:"";display:table;} .cms-home .main-container .main .col-main .std:after{clear:both;} .cms-home .main-container .main .col-main .std .side-col{display:inline;float:left;width:30.555555555555557%;margin:0 1.3888888888888888%;} .cms-home .main-container .main .col-main .std .home-spot{display:inline;float:left;width:63.888888888888886%;margin:0 1.3888888888888888%;}}@media only screen and (min-width:959px){}@media only screen and (min-width:1381px){}@media only tv and (min-width:1218px){}@media only tv and (min-width:1827px){}@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5){}

@@ -1,0 +1,65 @@
+<?php
+/**
+ *
+ * This file is part of the GPMD Magento Responsive Theme.
+ *
+ * The GPMD Magento Responsive Theme is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * The GPMD Magento Responsive Theme is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with the GPMD Magento Responsive Theme. If not, see
+ * http://www.gnu.org/licenses/.
+ *
+ * @category    GPMD
+ * @package     GPMD_Responsive_Theme
+ * @copyright   Copyright (c) 2012 GPMD.
+ * @author      Matt Bailey @GPMD LTD
+ */
+?>
+<?php $_width=$this->getImageWidth() ?>
+<div class="product-image-popup" style="width:<?php echo $_width; ?>px;">
+    <div class="buttons-set"><a href="#" onclick="window.close(); return false;" class="button"><span><?php echo $this->__('Close Window') ?></span></a></div>
+    <?php if($this->getPreviusImageUrl() || $this->getNextImageUrl()): ?>
+        <div class="nav">
+          <?php if($_prevUrl = $this->getPreviusImageUrl()): ?>
+              <a href="<?php echo $_prevUrl ?>" class="prev"><?php echo $this->__('Prev') ?></a>
+          <?php endif; ?>
+          <?php if($_nextUrl = $this->getNextImageUrl()): ?>
+              <a href="<?php echo $_nextUrl ?>" class="next"><?php echo $this->__('Next') ?></a>
+          <?php endif; ?>
+        </div>
+    <?php endif; ?>
+    <?php if($_imageTitle = $this->htmlEscape($this->getCurrentImage()->getLabel())): ?>
+        <h1 class="image-label"><?php echo $_imageTitle ?></h1>
+    <?php endif; ?>
+    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $this->getImageFile()); ?>"<?php if($_width): ?> width="<?php echo $_width ?>"<?php endif; ?> alt="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" title="<?php echo $this->htmlEscape($this->getCurrentImage()->getLabel()) ?>" id="product-gallery-image" class="image" />
+    <div class="buttons-set"><a href="#" onclick="window.close(); return false;" class="button"><span><?php echo $this->__('Close Window') ?></span></a></div>
+    <?php if($this->getPreviusImageUrl() || $this->getNextImageUrl()): ?>
+        <div class="nav">
+          <?php if($_prevUrl = $this->getPreviusImageUrl()): ?>
+              <a href="<?php echo $_prevUrl ?>" class="prev"><?php echo $this->__('Prev') ?></a>
+          <?php endif; ?>
+          <?php if($_nextUrl = $this->getNextImageUrl()): ?>
+              <a href="<?php echo $_nextUrl ?>" class="next"><?php echo $this->__('Next') ?></a>
+          <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Event.observe(window, 'load', function(){
+    var demensions = $('product-gallery-image').getDimensions();
+    if (demensions.width < 300) {
+        demensions.width = 300
+    }
+    window.resizeTo(demensions.width+90, demensions.height+210);
+});
+//]]>
+</script>

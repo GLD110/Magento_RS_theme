@@ -1,0 +1,70 @@
+<?php
+/**
+ *
+ * This file is part of the GPMD Magento Responsive Theme.
+ *
+ * The GPMD Magento Responsive Theme is free software: you can redistribute
+ * it and/or modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of the License,
+ * or (at your option) any later version.
+ *
+ * The GPMD Magento Responsive Theme is distributed in the hope that it will
+ * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with the GPMD Magento Responsive Theme. If not, see
+ * http://www.gnu.org/licenses/.
+ *
+ * @category    GPMD
+ * @package     GPMD_Responsive_Theme
+ * @copyright   Copyright (c) 2012 GPMD.
+ * @author      Matt Bailey @GPMD LTD
+ */
+?>
+<?php  $_order = $this->getOrder() ?>
+<div class="inner-shadow-wrapper">
+	<table class="data-table" id="my-orders-table" summary="<?php echo $this->__('Items Ordered') ?>">
+	    <col />
+	    <col width="1" />
+	    <col width="1" />
+	    <col width="1" />
+	    <col width="1" />
+	    <thead>
+	        <tr>
+	            <th><?php echo $this->__('Product Name') ?></th>
+	            <th><?php echo $this->__('SKU') ?></th>
+	            <th class="a-right"><?php echo $this->__('Price') ?></th>
+	            <th class="a-center"><?php echo $this->__('Qty') ?></th>
+	            <th class="a-right"><?php echo $this->__('Subtotal') ?></th>
+	        </tr>
+	    </thead>
+	    <tfoot>
+	        <?php echo $this->getChildHtml('order_totals') ?>
+	    </tfoot>
+	        <?php $_items = $_order->getItemsCollection(); ?>
+	        <?php $_index = 0; ?>
+	            <?php $_count = $_items->count(); ?>
+	        <?php foreach ($_items as $_item): ?>
+	        <?php if ($_item->getParentItem()) continue; ?>
+	        <tbody>
+	            <?php echo $this->getItemHtml($_item) ?>
+	            <?php if($this->helper('giftmessage/message')->getIsMessagesAvailable('order_item', $_item) && $_item->getGiftMessageId()): ?>
+	            <tr class="border<?php echo ($_index++ > $_count ?' last':'') ?>" id="order-item-gift-message-<?php echo $_item->getId() ?>" style="display:none;">
+	                <?php $_giftMessage=$this->helper('giftmessage/message')->getGiftMessageForEntity($_item); ?>
+	                <td class="gift-message-row" colspan="7">
+	                    <a href="#" title="<?php echo $this->__('Close') ?>" onclick="return giftMessageToogle('<?php echo $_item->getId() ?>');" class="btn-close"><?php echo $this->__('Close') ?></a>
+	                    <dl class="gift-message">
+	                        <dt><strong><?php echo $this->__('From:') ?></strong> <?php echo $this->htmlEscape($_giftMessage->getRecipient()) ?></dt>
+	                        <dt><strong><?php echo $this->__('To:') ?></strong> <?php echo $this->htmlEscape($_giftMessage->getSender()) ?></dt>
+	                        <dd><?php echo $this->helper('giftmessage/message')->getEscapedGiftMessage($_item) ?></dd>
+	                    </dl>
+	                </td>
+	            </tr>
+	            <?php endif ?>
+	        </tbody>
+	        <?php endforeach; ?>
+	</table>
+</div>
+<script type="text/javascript">decorateTable('my-orders-table', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>
